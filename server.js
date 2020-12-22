@@ -17,6 +17,33 @@ db.connect((err)=>{
     console.log('connect successful')
 })
 
+// 测试数据库的增删改查
+
+
+app.get('/createdb' , (req,res)=>{
+    let sql = `CREATE DATABASE user` 
+    db.query(sql , (err , result)=>{
+        if(err) {
+            throw err
+        } 
+        console.log(result) 
+        res.send('database create successful')
+    })
+})
+
+// 创建表
+app.get('/createtable' , (req , res)=>{
+    let sql = `CREATE TABLE posts(id int AUTO_INCREMENT,title VARCHAR(255) , body VARCHAR(255) , PRIMARY KEY(id))` 
+    db.query(sql , (err , result)=>{
+        if(err) {
+            throw err
+        } 
+        console.log(result)
+        res.send('table create successful')
+    })
+})
+// 增加两条数据 
+
 
 
 
