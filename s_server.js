@@ -1,5 +1,6 @@
 // sequelize 练习 
 
+const { result } = require('lodash');
 const { where } = require('sequelize');
 
 (async ()=>{
@@ -93,16 +94,61 @@ const { where } = require('sequelize');
     // Fruit.findOne({where : {name : '香蕉'}}).then((result)=>{
     //     console.log(result.get())     // 拿出当前的对象 
     // })
-    
+    // Fruit.findAndCountAll().then(result=>{
+    //       console.log(result.count)
+    //       console.log(result.rows)
+    // })
     // 查询操作符
-    const Op = Sequelize.Op
-    Fruit.findAll({
+    // const Op = Sequelize.Op
+    // Fruit.findAll({
+    //     where : {
+    //         price : {
+    //             [Op.or] : [{[Op.lt] : 6} , {[Op.lt] : 5}]
+    //         }
+    //     }
+    //     // where : {
+    //     //     price : {
+    //     //         [Op.lt] : 6 , 
+    //     //         [Op.gt] : 2 
+    //     //     }
+    //     // }
+    // }).then((result)=>{
+    //     console.log(result)
+    // })
+
+
+    // 排序
+    // Fruit.findAll({
+    //     order : [['price']]
+    // }).then((result)=>{
+    //     console.log(result)
+    // })
+    // 分页
+    // Fruit.findAll({
+    //     offset : 0,
+    //     limit : 2 
+    // }).then((result)=>{
+    //     console.log(result)
+    // })
+    //聚合
+    // Fruit.max('price').then((max)=>{
+    //     console.log('max---' , max)
+    // })
+    // Fruit.sum('price').then((max)=>{
+    //     console.log('sum---' , max)
+    // })
+
+
+
+    // 更新 
+    Fruit.destroy({
         where : {
-            price : {
-                [Op.or] : [{[Op.lt] : 6} , {[Op.gt] : 1}]
-            }
+            name : '鸭梨'
         }
-    }).then((result)=>{
+    }).then(r=>{
+        console.log(r)
+    })
+    Fruit.findAll().then((result)=>{
         console.log(result)
     })
 })()

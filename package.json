@@ -6,6 +6,7 @@
   "scripts": {
     "serve": "nodemon server.js",
     "s_serve": "nodemon s_server.js"
+    
   },
   "repository": {
     "type": "git",
